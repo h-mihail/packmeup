@@ -7,7 +7,7 @@ export interface CachedConnection {
   promise: Promise<MongooseConnection> | null;
 }
 
-let cached: CachedConnection = (global.mongoose as CachedConnection) || {
+const cached: CachedConnection = (global.mongoose as CachedConnection) || {
   conn: null,
   promise: null,
 };
