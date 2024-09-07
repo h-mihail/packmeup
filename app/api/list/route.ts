@@ -28,37 +28,3 @@ export async function GET(): Promise<NextResponse> {
     return NextResponse.json("Server error!", { status: 500 });
   }
 }
-
-export async function PATCH(request: Request): Promise<NextResponse> {
-  await dbConnect();
-
-  try {
-    const { id, name } = await request.json();
-    const updatedList = await ListModel.findByIdAndUpdate(
-      id,
-      {
-        $set: { name },
-      },
-      { returnOriginal: false }
-    );
-
-    return NextResponse.json(updatedList);
-  } catch (err) {
-    console.error(err);
-    return NextResponse.json("Server error!", { status: 500 });
-  }
-}
-
-export async function DELETE(request: Request): Promise<NextResponse> {
-  await dbConnect();
-
-  try {
-    const { id } = await request.json();
-    const deletedList = await ListModel.findByIdAndDelete(id);
-
-    return NextResponse.json(deletedList);
-  } catch (err) {
-    console.error(err);
-    return NextResponse.json("Server error!", { status: 500 });
-  }
-}
