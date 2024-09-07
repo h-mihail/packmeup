@@ -19,8 +19,7 @@ export async function PATCH(
         $set: {
           "categories.$.name": name,
         },
-      },
-      { returnOriginal: false }
+      }
     );
 
     if (result.modifiedCount === 0) {
@@ -58,8 +57,7 @@ export async function DELETE(
             _id: categoryId,
           },
         },
-      },
-      { returnOriginal: false }
+      }
     );
 
     if (result.modifiedCount === 0) {

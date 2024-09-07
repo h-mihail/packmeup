@@ -11,8 +11,10 @@ export async function POST(request: Request): Promise<NextResponse> {
     const { name, listId } = await request.json();
     const categoryId = new ObjectId();
 
-    const updatedList = await ListModel.findByIdAndUpdate(
-      listId,
+    const result = await ListModel.updateOne(
+      {
+        _id: listId,
+      },
       {
         $push: {
           categories: {
@@ -20,13 +22,14 @@ export async function POST(request: Request): Promise<NextResponse> {
             name,
           },
         },
-      },
-      { returnOriginal: false }
+      }
     );
 
-    if (!updatedList) {
+    if (result.modifiedCount === 0) {
       return NextResponse.json({ error: "Item not found!" }, { status: 404 });
     }
+
+    const updatedList = await ListModel.findById(listId);
 
     const newCategory = updatedList.categories.find((cat: ICategory) =>
       cat._id.equals(categoryId)

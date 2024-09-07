@@ -21,8 +21,7 @@ export async function POST(request: Request): Promise<NextResponse> {
             name,
           },
         },
-      },
-      { returnOriginal: false }
+      }
     );
 
     if (result.modifiedCount === 0) {
