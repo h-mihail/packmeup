@@ -1,7 +1,13 @@
-import mongoose from "mongoose";
-import { categorySchema } from "./categoryModel";
+import { Types, Document, Schema, model, models } from "mongoose";
+import { categorySchema, ICategory } from "./categoryModel";
 
-export const listSchema = new mongoose.Schema(
+export interface IList extends Document {
+  _id: Types.ObjectId;
+  name: String;
+  categories: [ICategory];
+}
+
+export const listSchema = new Schema<IList>(
   {
     name: { type: String, required: false },
     categories: { type: [categorySchema], required: false, default: [] },
@@ -9,5 +15,4 @@ export const listSchema = new mongoose.Schema(
   { collection: "list" }
 );
 
-export const ListModel =
-  mongoose.models["List"] || mongoose.model("List", listSchema);
+export const ListModel = models["List"] || model<IList>("List", listSchema);
