@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
+import { categorySchema } from "./categoryModel";
 
-const listSchema = new mongoose.Schema(
-  { name: { type: String, required: false } },
+export const listSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: false },
+    categories: { type: [categorySchema], required: false, default: [] },
+  },
   { collection: "list" }
 );
 
