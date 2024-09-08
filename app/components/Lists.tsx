@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { useContext } from "react";
 import { IListContext, ListContext } from "../providers/listProvider";
 
 export const Lists = () => {
