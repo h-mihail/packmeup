@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { IListContext, ListContext } from "../providers/listProvider";
+import { AddList } from "./AddList";
 
 export const Lists = () => {
   const { lists, setSelectedList } = useContext(ListContext) as IListContext;
@@ -17,6 +18,7 @@ export const Lists = () => {
               {list.name}
             </div>
           ))}
+          <AddList />
         </div>
       )}
     </div>

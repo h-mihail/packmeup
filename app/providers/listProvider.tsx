@@ -2,12 +2,7 @@
 
 import { createContext, useEffect, useState } from "react";
 import { useGetLists } from "../hooks/useGetLists";
-
-// temp
-interface IList {
-  _id: string;
-  name: string;
-}
+import { IList } from "../types";
 
 export interface IListContext {
   lists: IList[];
