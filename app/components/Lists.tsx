@@ -1,26 +1,18 @@
 import { useContext } from "react";
 
-import { IListContext, ListContext } from "../providers/listProvider";
+import { List } from "./List";
 import { AddList } from "./AddList";
-import { DeleteList } from "./DeleteList";
+import { IListContext, ListContext } from "../providers/listProvider";
 
 export const Lists = () => {
-  const { lists, setSelectedList } = useContext(ListContext) as IListContext;
+  const { lists } = useContext(ListContext) as IListContext;
 
   return (
     <div className="border-r-2 p-2">
       {lists && (
         <div className="flex flex-col gap-2">
           {lists.map((list) => (
-            <div key={list._id} className="flex justify-between gap-2 group">
-              <div
-                className="cursor-pointer"
-                onClick={() => setSelectedList(list)}
-              >
-                {list.name}
-              </div>
-              <DeleteList id={list._id} />
-            </div>
+            <List key={list._id} list={list} />
           ))}
           <AddList />
         </div>

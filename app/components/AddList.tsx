@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAddList } from "../hooks/useAddList";
 
 export const AddList = () => {
@@ -7,7 +7,6 @@ export const AddList = () => {
   const { handleAddList } = useAddList({
     callback: () => {
       toggleSetActive();
-      setNewListName("");
     },
   });
 
@@ -15,9 +14,13 @@ export const AddList = () => {
     setActive(!active);
   };
 
-  const handleNewListChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeNewListName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewListName(e.target.value);
   };
+
+  useEffect(() => {
+    setNewListName("");
+  }, [active]);
 
   return (
     <div className="mt-4">
@@ -26,10 +29,11 @@ export const AddList = () => {
           <input
             className="w-30 bg-transparent border rounded-md p-1 border-white"
             value={newListName}
-            onChange={handleNewListChange}
+            onChange={onChangeNewListName}
           />
           <button
             className="bg-green-900 py-1 px-2 rounded"
+            disabled={newListName === ""}
             onClick={() => handleAddList(newListName)}
           >
             Add

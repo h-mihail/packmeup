@@ -5,7 +5,7 @@ import { useGetLists } from "../hooks/useGetLists";
 import { IList } from "../types";
 
 export interface IListContext {
-  lists: IList[];
+  lists?: IList[];
   selectedList?: IList;
   setSelectedList: (list: IList) => void;
 }
