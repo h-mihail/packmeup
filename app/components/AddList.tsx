@@ -4,7 +4,7 @@ import { useAddList } from "../hooks/useAddList";
 export const AddList = () => {
   const [active, setActive] = useState(false);
   const [newListName, setNewListName] = useState("");
-  const { handleMutate } = useAddList({
+  const { handleAddList } = useAddList({
     callback: () => {
       toggleSetActive();
       setNewListName("");
@@ -30,7 +30,7 @@ export const AddList = () => {
           />
           <button
             className="bg-green-900 py-1 px-2 rounded"
-            onClick={() => handleMutate(newListName)}
+            onClick={() => handleAddList(newListName)}
           >
             Add
           </button>

@@ -17,11 +17,11 @@ export const useAddList = ({ callback }: UseAddListProps) => {
     },
   });
 
-  const handleMutate = (name: string) => {
+  const handleAddList = (name: string) => {
     addListMutation.mutate(name);
   };
 
   return {
-    handleMutate,
+    handleAddList,
   };
 };
