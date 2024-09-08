@@ -2,7 +2,7 @@ export const Tooltip = () => {
   return (
     <div className="flex flex-col gap-2 bg-teal-900 p-8">
       <h1 className="text-xl">Welcome to Packmeup!</h1>
-      <p>Here's what you need to get started:</p>
+      <p>Here is what you need to get started:</p>
       <ol className="list-decimal">
         <li>Select a list from the left menu.</li>
         <li>

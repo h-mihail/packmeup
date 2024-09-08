@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { IListContext, ListContext } from "../providers/listProvider";
 import { AddCategory } from "./AddCategory";
-import { DeleteCategory } from "./DeleteCategory";
 import { Category } from "./Category";
 
 export const Categories = () => {
