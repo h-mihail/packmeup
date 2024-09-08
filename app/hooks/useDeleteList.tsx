@@ -17,8 +17,8 @@ export const useDeleteList = ({ callback }: UseDeleteListProps = {}) => {
     },
   });
 
-  const handleDeleteList = (name: string) => {
-    deleteListMutation.mutate(name);
+  const handleDeleteList = (id: string) => {
+    deleteListMutation.mutate(id);
   };
 
   return {

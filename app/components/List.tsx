@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { IList } from "../types";
 import { DeleteList } from "./DeleteList";
 import { IListContext, ListContext } from "../providers/listProvider";
-import { useEditList } from "../hooks/editList";
+import { useEditList } from "../hooks/useEditList";
 
 interface ListProps {
   list: IList;

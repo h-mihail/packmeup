@@ -1,4 +1,4 @@
-import { useDeleteList } from "../hooks/deleteList";
+import { useDeleteList } from "../hooks/useDeleteList";
 
 interface DeleteListProps {
   id: string;
