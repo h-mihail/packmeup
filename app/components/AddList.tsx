@@ -47,7 +47,7 @@ export const AddList = () => {
         </div>
       ) : (
         <div>
-          <button onClick={toggleSetActive}>+ Add new</button>
+          <button onClick={toggleSetActive}>+ Add new list</button>
         </div>
       )}
     </div>

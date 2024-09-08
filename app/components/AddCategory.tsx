@@ -53,7 +53,7 @@ export const AddCategory = () => {
         </div>
       ) : (
         <div>
-          <button onClick={toggleSetActive}>+ Add new</button>
+          <button onClick={toggleSetActive}>+ Add new category</button>
         </div>
       )}
     </div>
