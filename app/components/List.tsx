@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react";
 
 import { IList } from "../types";
 import { DeleteList } from "./DeleteList";
+import { editList } from "../queries/editList";
+import { useEditEntity } from "../hooks/useEditEntity";
 import { IListContext, ListContext } from "../providers/listProvider";
-import { useEditList } from "../hooks/useEditList";
 
 interface ListProps {
   list: IList;
@@ -13,10 +14,11 @@ export const List: React.FC<ListProps> = ({ list }) => {
   const { setSelectedList } = useContext(ListContext) as IListContext;
   const [isEdit, setIsEdit] = useState(false);
   const [listName, setListName] = useState(list.name);
-  const { handleEditList } = useEditList({
+  const { handleEditEntity } = useEditEntity({
     callback: () => {
       toggleIsEdit();
     },
+    query: editList,
   });
 
   const onChangeListName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +43,7 @@ export const List: React.FC<ListProps> = ({ list }) => {
       <button
         className="bg-green-900 py-1 px-2 rounded"
         disabled={listName === list.name}
-        onClick={() => handleEditList(list._id, listName)}
+        onClick={() => handleEditEntity({ id: list._id, name: listName })}
       >
         Save
       </button>

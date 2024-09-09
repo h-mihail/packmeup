@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react";
 
 import { ICategory } from "../types";
 import { DeleteCategory } from "./DeleteCategory";
-import { useEditCategory } from "../hooks/useEditCategory";
+import { useEditEntity } from "../hooks/useEditEntity";
 import { IListContext, ListContext } from "../providers/listProvider";
+import { editCategory } from "../queries/editCategory";
 
 interface CategoryProps {
   category: ICategory;
@@ -13,10 +14,11 @@ export const Category: React.FC<CategoryProps> = ({ category }) => {
   const { selectedList } = useContext(ListContext) as IListContext;
   const [isEdit, setIsEdit] = useState(false);
   const [categoryName, setCategoryName] = useState(category.name);
-  const { handleEditCategory } = useEditCategory({
+  const { handleEditEntity } = useEditEntity({
     callback: () => {
       toggleIsEdit();
     },
+    query: editCategory,
   });
 
   const onChangeCategoryName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +44,7 @@ export const Category: React.FC<CategoryProps> = ({ category }) => {
         className="bg-green-900 py-1 px-2 rounded"
         disabled={categoryName === category.name}
         onClick={() =>
-          handleEditCategory({
+          handleEditEntity({
             listId: selectedList?._id ?? "",
             categoryId: category._id,
             name: categoryName ?? "",

@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 
 import { IItem } from "../types";
-import { useEditItem } from "../hooks/useEditItem";
+import { DeleteItem } from "./DeleteItem";
+import { editItem } from "../queries/editItem";
+import { useEditEntity } from "../hooks/useEditEntity";
+import { EditableSelectField } from "./shared/EditableSelectField";
 import { IListContext, ListContext } from "../providers/listProvider";
 import { ClickOutsideCbParams, EditableField } from "./shared/EditableField";
-import { EditableSelectField } from "./shared/EditableSelectField";
-import { DeleteItem } from "./DeleteItem";
 
 interface ItemProps {
   item: IItem;
@@ -20,11 +21,13 @@ const measurementUnitOptions = [
 
 export const Item: React.FC<ItemProps> = ({ item, categoryId }) => {
   const { selectedList } = useContext(ListContext) as IListContext;
-  const { handleEditItem } = useEditItem();
+  const { handleEditEntity } = useEditEntity({
+    query: editItem,
+  });
 
   const clickOutsideCb = ({ e, ...rest }: ClickOutsideCbParams) => {
     e.preventDefault?.();
-    handleEditItem({
+    handleEditEntity({
       id: item._id,
       categoryId,
       listId: selectedList?._id ?? "",
