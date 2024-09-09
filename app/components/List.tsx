@@ -54,7 +54,7 @@ export const List: React.FC<ListProps> = ({ list }) => {
     </div>
   ) : (
     <div className="flex justify-between gap-2 group">
-      <div className="cursor-pointer" onClick={() => setSelectedList(list)}>
+      <div className="cursor-pointer" onClick={() => setSelectedList(list._id)}>
         {list.name}
       </div>
       <div className="flex gap-2">
