@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { PieChart } from "react-minimal-pie-chart";
 
 import { IList } from "../types";
-import { calculateTotalWeight, colors, convertToKilograms } from "../utils";
+import { calculateTotalWeight, colors } from "../utils";
 
 interface WeightPieChartProps {
   list?: IList;
