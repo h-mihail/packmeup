@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import { Items } from "./Items";
+import { AddItem } from "./AddItem";
 import { Category } from "./Category";
 import { AddCategory } from "./AddCategory";
 import { IListContext, ListContext } from "../providers/listProvider";
@@ -17,7 +18,8 @@ export const Categories = () => {
             key={category._id}
           >
             <Category category={category} />
-            <Items items={category.items} />
+            <Items items={category.items} categoryId={category._id} />
+            <AddItem />
           </div>
         ))}
       </div>
