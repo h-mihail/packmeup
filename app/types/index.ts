@@ -14,7 +14,13 @@ export interface IItem {
   _id: string;
   name: string;
   weight: number;
-  measurementUnit: string;
+  measurementUnit: MeasurementUnit;
   quantity: number;
   isWorn: boolean;
+}
+
+export enum MeasurementUnit {
+  gram = "gram",
+  kilogram = "kilogram",
+  pound = "pound",
 }

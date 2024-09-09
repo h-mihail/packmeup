@@ -3,7 +3,7 @@ import { Types, Document, Schema, model, models } from "mongoose";
 enum MeasurementUnit {
   gram = "gram",
   kilogram = "kilogram",
-  pound = "pount",
+  pound = "pound",
 }
 
 export interface IItem extends Document {
