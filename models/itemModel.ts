@@ -17,15 +17,15 @@ export interface IItem extends Document {
 
 export const itemSchema = new Schema<IItem>(
   {
-    name: { type: String, required: false },
-    weight: { type: Number, required: false },
+    name: { type: String, required: false, default: "New item" },
+    weight: { type: Number, required: false, default: 0 },
     measurementUnit: {
       type: String,
       enum: Object.values(MeasurementUnit),
       required: false,
       default: MeasurementUnit.kilogram,
     },
-    quantity: { type: Number, required: false },
+    quantity: { type: Number, required: false, default: 1 },
     isWorn: { type: Boolean, required: false, default: false },
   },
   { collection: "item" }

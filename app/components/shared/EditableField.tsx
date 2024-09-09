@@ -57,6 +57,8 @@ export const EditableField: React.FC<EditableFieldProps> = ({
       className={`bg-transparent ${extraClassName}`}
     />
   ) : (
-    <div onClick={toggleSetIsActive}>{value}</div>
+    <div className="cursor-pointer" onClick={toggleSetIsActive}>
+      {value}
+    </div>
   );
 };

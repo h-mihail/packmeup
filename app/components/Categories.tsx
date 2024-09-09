@@ -19,7 +19,7 @@ export const Categories = () => {
           >
             <Category category={category} />
             <Items items={category.items} categoryId={category._id} />
-            <AddItem />
+            <AddItem categoryId={category._id} />
           </div>
         ))}
       </div>

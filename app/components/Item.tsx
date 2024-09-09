@@ -5,11 +5,18 @@ import { useEditItem } from "../hooks/useEditItem";
 import { IListContext, ListContext } from "../providers/listProvider";
 import { ClickOutsideCbParams, EditableField } from "./shared/EditableField";
 import { EditableSelectField } from "./shared/EditableSelectField";
+import { DeleteItem } from "./DeleteItem";
 
 interface ItemProps {
   item: IItem;
   categoryId: string;
 }
+
+const measurementUnitOptions = [
+  { label: "g", value: "gram" },
+  { label: "kg", value: "kilogram" },
+  { label: "lb", value: "pound" },
+];
 
 export const Item: React.FC<ItemProps> = ({ item, categoryId }) => {
   const { selectedList } = useContext(ListContext) as IListContext;
@@ -25,14 +32,8 @@ export const Item: React.FC<ItemProps> = ({ item, categoryId }) => {
     });
   };
 
-  const measurementUnitOptions = [
-    { label: "g", value: "gram" },
-    { label: "kg", value: "kilogram" },
-    { label: "lb", value: "pound" },
-  ];
-
   return (
-    <React.Fragment key={item._id}>
+    <div key={item._id} className="grid grid-cols-[6fr_1fr_1fr_1fr_50px] group">
       <EditableField
         name="name"
         value={item.name}
@@ -57,6 +58,7 @@ export const Item: React.FC<ItemProps> = ({ item, categoryId }) => {
         options={measurementUnitOptions}
         clickOutsideCb={clickOutsideCb}
       />
-    </React.Fragment>
+      <DeleteItem id={item._id} categoryId={categoryId} />
+    </div>
   );
 };

@@ -27,7 +27,7 @@ export const EditableSelectField: React.FC<EditableSelectFieldProps> = ({
 
   return (
     <select
-      className="bg-transparent appearance-none w-12"
+      className="bg-transparent appearance-none cursor-pointer w-12"
       value={value}
       onChange={handleOnChangeField}
     >
