@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
-import { useDeleteItem } from "../hooks/useDeleteItem";
+import { deleteItem } from "../queries/deleteItem";
+import { useDeleteEntity } from "../hooks/useDeleteEntity";
 import { IListContext, ListContext } from "../providers/listProvider";
 
 interface DeleteItemProps {
@@ -9,14 +10,16 @@ interface DeleteItemProps {
 }
 
 export const DeleteItem: React.FC<DeleteItemProps> = ({ id, categoryId }) => {
-  const { handleDeleteItem } = useDeleteItem();
+  const { handleDeleteEntity } = useDeleteEntity({
+    query: deleteItem,
+  });
   const { selectedList } = useContext(ListContext) as IListContext;
 
   return (
     <button
       className="opacity-0 group-hover:opacity-100"
       onClick={() =>
-        handleDeleteItem({ id, listId: selectedList?._id ?? "", categoryId })
+        handleDeleteEntity({ id, listId: selectedList?._id ?? "", categoryId })
       }
     >
       Delete

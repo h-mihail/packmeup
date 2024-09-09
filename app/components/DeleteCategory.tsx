@@ -1,4 +1,5 @@
-import { useDeleteCategory } from "../hooks/useDeleteCategory";
+import { useDeleteEntity } from "../hooks/useDeleteEntity";
+import { deleteCategory } from "../queries/deleteCategory";
 
 interface DeleteCategoryProps {
   id: string;
@@ -9,12 +10,14 @@ export const DeleteCategory: React.FC<DeleteCategoryProps> = ({
   id,
   listId,
 }) => {
-  const { handleDeleteCategory } = useDeleteCategory();
+  const { handleDeleteEntity } = useDeleteEntity({
+    query: deleteCategory,
+  });
 
   return (
     <button
       className="opacity-0 group-hover:opacity-100"
-      onClick={() => handleDeleteCategory(id, listId)}
+      onClick={() => handleDeleteEntity({ id, listId })}
     >
       Delete
     </button>
