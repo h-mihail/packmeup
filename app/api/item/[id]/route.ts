@@ -12,7 +12,8 @@ export async function PATCH(
 
   try {
     const { id: itemId } = params;
-    const { quantity, weight, name, listId, categoryId } = await request.json();
+    const { measurementUnit, quantity, weight, name, listId, categoryId } =
+      await request.json();
 
     const result = await ListModel.updateOne(
       {
@@ -25,6 +26,8 @@ export async function PATCH(
           "categories.$[category].items.$[item].name": name,
           "categories.$[category].items.$[item].weight": weight,
           "categories.$[category].items.$[item].quantity": quantity,
+          "categories.$[category].items.$[item].measurementUnit":
+            measurementUnit,
         },
       },
       {

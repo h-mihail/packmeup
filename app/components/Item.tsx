@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 
 import { IItem } from "../types";
 import { useEditItem } from "../hooks/useEditItem";
-import { ClickOutsideCbParams, EditableField } from "./EditableField";
 import { IListContext, ListContext } from "../providers/listProvider";
+import { ClickOutsideCbParams, EditableField } from "./shared/EditableField";
+import { EditableSelectField } from "./shared/EditableSelectField";
 
 interface ItemProps {
   item: IItem;
@@ -15,7 +16,7 @@ export const Item: React.FC<ItemProps> = ({ item, categoryId }) => {
   const { handleEditItem } = useEditItem();
 
   const clickOutsideCb = ({ e, ...rest }: ClickOutsideCbParams) => {
-    e.preventDefault();
+    e.preventDefault?.();
     handleEditItem({
       id: item._id,
       categoryId,
@@ -24,22 +25,36 @@ export const Item: React.FC<ItemProps> = ({ item, categoryId }) => {
     });
   };
 
+  const measurementUnitOptions = [
+    { label: "g", value: "gram" },
+    { label: "kg", value: "kilogram" },
+    { label: "lb", value: "pound" },
+  ];
+
   return (
     <React.Fragment key={item._id}>
       <EditableField
         name="name"
         value={item.name}
         clickOutsideCb={clickOutsideCb}
+        extraClassName="mr-4"
+      />
+      <EditableField
+        name="quantity"
+        value={item.quantity}
+        clickOutsideCb={clickOutsideCb}
+        extraClassName="w-12"
       />
       <EditableField
         name="weight"
         value={item.weight}
         clickOutsideCb={clickOutsideCb}
+        extraClassName="w-12"
       />
-      <div>{item.measurementUnit}</div>
-      <EditableField
-        name="quantity"
-        value={item.quantity}
+      <EditableSelectField
+        name="measurementUnit"
+        value={item.measurementUnit}
+        options={measurementUnitOptions}
         clickOutsideCb={clickOutsideCb}
       />
     </React.Fragment>

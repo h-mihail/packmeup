@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { useClickOutside } from "../hooks/useClickOutside";
+import { useClickOutside } from "@/app/hooks/useClickOutside";
 
 export type ClickOutsideCbParams = {
   e: MouseEvent | TouchEvent;
@@ -12,12 +12,14 @@ interface EditableFieldProps {
   name: string;
   value: string | number;
   clickOutsideCb: (params: ClickOutsideCbParams) => void;
+  extraClassName?: string;
 }
 
 export const EditableField: React.FC<EditableFieldProps> = ({
   name,
   value: defaultValue,
   clickOutsideCb,
+  extraClassName,
 }) => {
   const [value, setValue] = useState(defaultValue);
   const [isActive, setIsActive] = useState(false);
@@ -52,7 +54,7 @@ export const EditableField: React.FC<EditableFieldProps> = ({
       ref={innerRef}
       value={value}
       onChange={handleOnChangeField}
-      className="bg-transparent mr-4"
+      className={`bg-transparent ${extraClassName}`}
     />
   ) : (
     <div onClick={toggleSetIsActive}>{value}</div>
