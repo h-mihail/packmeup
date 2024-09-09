@@ -1,18 +1,21 @@
 import { useContext } from "react";
 
-import { useAddItem } from "../hooks/useAddItem";
 import { IListContext, ListContext } from "../providers/listProvider";
+import { useAddEntity } from "../hooks/useAddEntity";
+import { addItem } from "../queries/addItem";
 
 interface AddItemProps {
   categoryId: string;
 }
 
 export const AddItem: React.FC<AddItemProps> = ({ categoryId }) => {
-  const { handleAddItem } = useAddItem();
+  const { handleAddEntity } = useAddEntity({
+    query: addItem,
+  });
   const { selectedList } = useContext(ListContext) as IListContext;
 
   const handleAddNewItem = () => {
-    handleAddItem({ categoryId, listId: selectedList?._id ?? "" });
+    handleAddEntity({ categoryId, listId: selectedList?._id ?? "" });
   };
 
   return (

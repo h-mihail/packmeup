@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { useAddList } from "../hooks/useAddList";
+import { useAddEntity } from "../hooks/useAddEntity";
+import { addList } from "../queries/addList";
 
 export const AddList = () => {
   const [active, setActive] = useState(false);
   const [newListName, setNewListName] = useState("");
-  const { handleAddList } = useAddList({
+  const { handleAddEntity } = useAddEntity({
     callback: () => {
       toggleSetActive();
     },
+    query: addList,
   });
 
   const toggleSetActive = () => {
@@ -34,7 +36,7 @@ export const AddList = () => {
           <button
             className="bg-green-900 py-1 px-2 rounded"
             disabled={newListName === ""}
-            onClick={() => handleAddList(newListName)}
+            onClick={() => handleAddEntity({ name: newListName })}
           >
             Add
           </button>

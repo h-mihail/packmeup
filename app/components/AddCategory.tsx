@@ -1,17 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 
-import { useAddCategory } from "../hooks/useAddCategory";
 import { IListContext, ListContext } from "../providers/listProvider";
+import { useAddEntity } from "../hooks/useAddEntity";
+import { addCategory } from "../queries/addCategory";
 
 export const AddCategory = () => {
   const { selectedList } = useContext(ListContext) as IListContext;
 
   const [active, setActive] = useState(false);
   const [newCategoryName, setNewCategoryName] = useState("");
-  const { handleAddCategory } = useAddCategory({
+  const { handleAddEntity } = useAddEntity({
     callback: () => {
       toggleSetActive();
     },
+    query: addCategory,
   });
 
   const toggleSetActive = () => {
@@ -39,7 +41,10 @@ export const AddCategory = () => {
             className="bg-green-900 py-1 px-2 rounded"
             disabled={newCategoryName === ""}
             onClick={() =>
-              handleAddCategory(selectedList?._id ?? "", newCategoryName)
+              handleAddEntity({
+                listId: selectedList?._id ?? "",
+                name: newCategoryName,
+              })
             }
           >
             Add

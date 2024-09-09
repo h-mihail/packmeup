@@ -23,7 +23,7 @@ export const Categories = () => {
           </div>
         ))}
       </div>
-      <AddCategory />
+      {selectedList && <AddCategory />}
     </div>
   );
 };
