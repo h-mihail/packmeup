@@ -8,7 +8,7 @@ export const ListDetails = () => {
   const { selectedList } = useContext(ListContext) as IListContext;
 
   return (
-    <div className="flex flex-col gap-4 justify-center align-middle">
+    <div className="flex flex-col gap-8 justify-center align-middle p-8">
       <h1 className="text-2xl">{selectedList?.name}</h1>
       <Tooltip />
       <Categories />

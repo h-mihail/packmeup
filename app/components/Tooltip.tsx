@@ -1,6 +1,6 @@
 export const Tooltip = () => {
   return (
-    <div className="flex flex-col gap-2 bg-teal-900 p-8">
+    <div className="flex flex-col gap-2 bg-teal-900 p-8 rounded-md">
       <h1 className="text-xl">Welcome to Packmeup!</h1>
       <p>Here is what you need to get started:</p>
       <ol className="list-decimal">

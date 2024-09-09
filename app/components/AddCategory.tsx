@@ -27,7 +27,7 @@ export const AddCategory = () => {
   }, [active]);
 
   return (
-    <div className="mt-4">
+    <div className="mt-8">
       {active ? (
         <div className="flex gap-2">
           <input

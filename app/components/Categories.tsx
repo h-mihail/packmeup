@@ -1,16 +1,24 @@
 import { useContext } from "react";
-import { IListContext, ListContext } from "../providers/listProvider";
-import { AddCategory } from "./AddCategory";
+
+import { Items } from "./Items";
 import { Category } from "./Category";
+import { AddCategory } from "./AddCategory";
+import { IListContext, ListContext } from "../providers/listProvider";
 
 export const Categories = () => {
   const { selectedList } = useContext(ListContext) as IListContext;
 
   return (
     <div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-8">
         {selectedList?.categories.map((category) => (
-          <Category key={category._id} category={category} />
+          <div
+            className="flex flex-col gap-4 border rounded-md p-4"
+            key={category._id}
+          >
+            <Category category={category} />
+            <Items items={category.items} />
+          </div>
         ))}
       </div>
       <AddCategory />

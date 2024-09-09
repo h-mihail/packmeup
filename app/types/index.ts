@@ -12,9 +12,9 @@ export interface ICategory {
 
 export interface IItem {
   _id: string;
-  name: String;
-  weight: Number;
-  measurementUnit: String;
-  quantity: Number;
-  isWorn: Boolean;
+  name: string;
+  weight: number;
+  measurementUnit: string;
+  quantity: number;
+  isWorn: boolean;
 }

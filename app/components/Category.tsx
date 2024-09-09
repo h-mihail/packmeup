@@ -29,7 +29,7 @@ export const Category: React.FC<CategoryProps> = ({ category }) => {
 
   useEffect(() => {
     setCategoryName(category.name);
-  }, [isEdit]);
+  }, [isEdit, category.name]);
 
   return isEdit ? (
     <div className="flex gap-2">
@@ -60,7 +60,7 @@ export const Category: React.FC<CategoryProps> = ({ category }) => {
     </div>
   ) : (
     <div key={category._id} className="flex justify-between gap-2 group">
-      <div>{category.name}</div>
+      <div className="font-bold">{category.name}</div>
       <div className="flex gap-2">
         <button
           className="opacity-0 group-hover:opacity-100"

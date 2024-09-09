@@ -29,7 +29,7 @@ export const List: React.FC<ListProps> = ({ list }) => {
 
   useEffect(() => {
     setListName(list.name);
-  }, [isEdit]);
+  }, [isEdit, list.name]);
 
   return isEdit ? (
     <div className="flex gap-2">
